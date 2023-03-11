@@ -14,3 +14,35 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 // const app = initializeApp(firebaseConfig);
+
+// Reference the contact form
+var contact_db = firebase.database.ref('My Personal Website');
+
+document.getElementById("contact-form").addEventListener("submit", submit_form);
+
+function submit_form(e) {
+    e.preventDefault();
+
+    var name = getElementVal("Name");
+    var email = getElementVal("Email");
+    var subject = getElementVal("Subject");
+    var msg = getElementVal("Message");
+
+    saveMessage(name, email, subject, msg);
+
+}
+
+const saveMessage = (name, email, subject, msg) => {
+    var newContactForm = contact_db.push();
+
+    newContactForm.set({
+        name: name,
+        email: email,
+        subject: subject,
+        message: msg
+    });
+}
+
+const getElementVal = (id) => {
+    return document.getElementsByName(id).value;
+}
