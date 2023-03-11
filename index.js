@@ -15,34 +15,37 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 // const app = initializeApp(firebaseConfig);
 
-// Reference the contact form
-var contact_db = firebase.database.ref('My Personal Website');
+// Get a reference to the Firebase Realtime Database
+var database = firebase.database();
 
-document.getElementById("contact-form").addEventListener("submit", submit_form);
 
-function submit_form(e) {
-    e.preventDefault();
+// Get a reference to the contact form
+var contactForm = document.getElementById("contact_form");
 
-    var name = getElementVal("Name");
-    var email = getElementVal("Email");
-    var subject = getElementVal("Subject");
-    var msg = getElementVal("Message");
+// Add an event listener to the contact form to listen for form submissions
+contactForm.addEventListener("submit", function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
 
-    saveMessage(name, email, subject, msg);
+  // Get the values from the contact form
+  var name = contactForm.querySelector("[name='Name']").value;
+  var email = contactForm.querySelector("[name='Email']").value;
+  var subject = contactForm.querySelector("[name='Subject']").value;
+  var message = contactForm.querySelector("[name='Message']").value;
 
-}
-
-const saveMessage = (name, email, subject, msg) => {
-    var newContactForm = contact_db.push();
-
-    newContactForm.set({
-        name: name,
-        email: email,
-        subject: subject,
-        message: msg
-    });
-}
-
-const getElementVal = (id) => {
-    return document.getElementsByName(id).value;
-}
+  // Save the user's input to the Firebase Realtime Database
+  database.ref('messages').push({
+    name: name,
+    email: email,
+    subject: subject,
+    message: message
+  })
+  .then(function() {
+    // If the data was saved to the database successfully, show a success message
+    alert("Your message was sent successfully!");
+  })
+  .catch(function(error) {
+    // If there was an error saving the data to the database, show an error message
+    alert("There was an error sending your message. Please try again later.");
+  });
+});
