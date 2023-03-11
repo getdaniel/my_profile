@@ -43,6 +43,8 @@ contactForm.addEventListener("submit", function(event) {
   .then(function() {
     // If the data was saved to the database successfully, show a success message
     alert("Your message was sent successfully!");
+
+    contactForm.reset();
   })
   .catch(function(error) {
     // If there was an error saving the data to the database, show an error message
