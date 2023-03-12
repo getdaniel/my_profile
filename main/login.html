@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/virtual.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/topbar.virtual.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
     </head>
@@ -32,15 +33,18 @@
             <div class="col-lg-5">
                 <form class="vg-contact-form" id="contact_form">
                     <div class="form-row">
-                        <div class="col-12 mt-3 wow fadeInUp">
-                            <input class="form-control" type="email" name="Email" placeholder="Email Address" style="border: 1px solid #ced4da;">
+                      <div class="col-12 mt-3 wow fadeInUp">
+                        <input class="form-control" type="email" name="Email" placeholder="Email Address" style="border: 1px solid #ced4da;">
+                      </div>
+                      <div class="col-12 mt-3 wow fadeInUp position-relative">
+                        <input class="form-control" type="password" name="Password" placeholder="Password" style="border: 1px solid #ced4da;">
+                        <div class="show-password">
+                          <i class="fa fa-eye"></i>
                         </div>
-                        <div class="col-12 mt-3 wow fadeInUp">
-                            <input class="form-control" type="password" name="Password" placeholder="Password" style="border: 1px solid #ced4da;">
-                        </div>
-                        <button type="submit" class="btn btn-theme wow fadeInUp">Login</button>
+                      </div>                      
+                      <button type="submit" class="btn btn-theme wow fadeInUp">Login</button>
                     </div>
-                </form>
+                  </form>  
             </div>
         </div>
             <!-- End Caption header -->
@@ -48,6 +52,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
         <script src="./firebase_config.js"></script>
         <script src="./admin_auth.js"></script>
+        <script src="./show_hide.js"></script>
 
     </body>
 </html>

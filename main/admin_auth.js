@@ -1,24 +1,23 @@
-// Get a reference to the Firebase authentication
-var auth = firebase.auth();
+// Get the form element
+const form = document.getElementById('contact_form');
 
-document.getElementById("contact_form").addEventListener("submit", function(event) {
-    event.preventDefault();
+// Add an event listener for form submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting normally
 
-    var email = document.getElementsByName("Email")[0].value;
-    var password = document.getElementsByName("Password")[0].value;
+  // Get the email and password input values
+  const email = form.Email.value;
+  const password = form.Password.value;
 
-    auth.signInWithEmailAndPassword(email, password)
+  // Sign in with email and password
+  firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-        // Successful login
-        var user = userCredential.user;
-        console.log(user.uid);
-        // User is authenticated, redirect to admin page
-        window.location.href = "admin.html";
+      // Login successful, redirect to admin page
+      window.location.href = 'admin.html';
     })
     .catch((error) => {
-        // Login error
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
+      // Login failed, reset form and display error message
+      form.reset();
+      alert(error.message);
     });
 });

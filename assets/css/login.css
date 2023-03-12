@@ -39,3 +39,17 @@
     background-color: #0069d9;
     cursor: pointer;
   }
+
+  .show-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .show-password i {
+    color: #999;
+  }
+  .show-password i.active {
+    color: #007bff;
+  }  
