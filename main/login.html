@@ -28,22 +28,26 @@
 
             <!-- Caption header -->
             <div class="caption-header text-center wow zoomInDown">
-                <h5 class="fw-normal">Welcome</h5>
-                <div class="col-lg-5">
+            <h5 class="fw-normal">Are you Admin? If so, login!</h5>
+            <div class="col-lg-5">
                 <form class="vg-contact-form" id="contact_form">
                     <div class="form-row">
-                    <div class="col-12 mt-3 wow fadeInUp">
-                        <input class="form-control" type="text" name="Name" placeholder="Your Name" style="border: 1px solid #ced4da;">
-                    </div>
-                    <div class="col-12 mt-3 wow fadeInUp">
-                        <input class="form-control" type="password" name="Email" placeholder="Email Address" style="border: 1px solid #ced4da;">
-                    </div>
-                    <button type="submit" class="btn btn-theme wow fadeInUp">Login</button>
+                        <div class="col-12 mt-3 wow fadeInUp">
+                            <input class="form-control" type="email" name="Email" placeholder="Email Address" style="border: 1px solid #ced4da;">
+                        </div>
+                        <div class="col-12 mt-3 wow fadeInUp">
+                            <input class="form-control" type="password" name="Password" placeholder="Password" style="border: 1px solid #ced4da;">
+                        </div>
+                        <button type="submit" class="btn btn-theme wow fadeInUp">Login</button>
                     </div>
                 </form>
-                </div>
             </div>
-            <!-- End Caption header -->
         </div>
+            <!-- End Caption header -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+        <script src="./firebase_config.js"></script>
+        <script src="./admin_auth.js"></script>
+
     </body>
 </html>
