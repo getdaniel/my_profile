@@ -10,6 +10,8 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/virtual.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/topbar.virtual.css">
+
+        <link rel="stylesheet" type="text/css" href="./table.css">
     </head>
     <body>
         <div class="vg-page page-home" id="home" style="background-image: url(../assets/img/bg_image_1.jpg)">
@@ -23,6 +25,23 @@
                 </div>
             </div>
             <!-- End Navbar -->
+
+            <table id="messages-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+        <script src="./firebase_config.js"></script>
+        <script src="./admin/retrieve_msg.js"></script>
     </body>
 </html>
