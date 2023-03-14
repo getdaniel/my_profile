@@ -1,47 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <title> Daniel </title>
-        <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/virtual.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/topbar.virtual.css">
+    <title> Daniel </title>
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/virtual.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/topbar.virtual.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-        <link rel="stylesheet" type="text/css" href="../assets/css/table.css">
-    </head>
-    <body>
-        <div class="vg-page page-home" id="home" style="background-image: url(../assets/img/bg_image_1.jpg)">
-            <!-- Navbar -->
-            <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
-                <div class="container">
-                    <a href="../index.html" class="navbar-brand"> Daniel </a>
-                    <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
-                        <span class="ti-menu"></span>
-                    </button>
-                </div>
-            </div>
-            <!-- End Navbar -->
-
-            <table id="messages-table" border="1">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+    <link rel="stylesheet" type="text/css" href="../assets/css/table.css" />
+  </head>
+  <body>
+    <div
+      class="vg-page page-home"
+      id="home"
+      style="background-image: url(../assets/img/bg_image_1.jpg)"
+    >
+      <!-- Navbar -->
+      <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
+        <div class="container">
+          <a href="../index.html" class="navbar-brand"> Daniel </a>
+          <button
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#main-navbar"
+            aria-expanded="true"
+          >
+            <span class="ti-menu"></span>
+          </button>
         </div>
+      </div>
+      <!-- End Navbar -->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-        <script src="./firebase_config.js"></script>
-        <script src="./admin/retrieve_msg.js"></script>
-    </body>
+      <table id="messages-table" border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal fade" id="reply-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="reply-modal-label">Reply to Message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>Enter your reply below:</p>
+            <textarea id="reply-text" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="send-reply-btn">Send</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./firebase_config.js"></script>
+    <script src="./admin/retrieve_msg.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+  </body>
 </html>
