@@ -15,23 +15,11 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/table.css" />
   </head>
   <body>
-    <div
-      class="vg-page page-home"
-      id="home"
-      style="background-image: url(../assets/img/bg_image_1.jpg)"
-    >
+    <div class="vg-page page-home" id="home" style="background-image: url(../assets/img/bg_image_1.jpg)">
       <!-- Navbar -->
       <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
         <div class="container">
           <a href="../index.html" class="navbar-brand"> Daniel </a>
-          <button
-            class="navbar-toggler"
-            data-toggle="collapse"
-            data-target="#main-navbar"
-            aria-expanded="true"
-          >
-            <span class="ti-menu"></span>
-          </button>
         </div>
       </div>
       <!-- End Navbar -->
@@ -43,15 +31,13 @@
             <th>Email</th>
             <th>Subject</th>
             <th>Message</th>
-            <th>Actions</th>
+            <th colspan="2">Actions</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-    </div>
-
-    <!-- Reply Modal -->
-    <div class="modal fade" id="reply-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
+      <!-- Reply Modal -->
+      <div class="modal fade" id="reply-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -70,6 +56,7 @@
             </div>
         </div>
         </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>

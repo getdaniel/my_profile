@@ -29,7 +29,7 @@ contactForm.addEventListener("submit", function(event) {
 
     contactForm.reset();
   })
-  .catch(function(error) {
+  .catch(function() {
     // If there was an error saving the data to the database, show an error message
     alert("There was an error sending your message. Please try again later.");
   });

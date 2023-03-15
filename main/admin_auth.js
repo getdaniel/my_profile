@@ -11,7 +11,7 @@ form.addEventListener('submit', (e) => {
 
   // Sign in with email and password
   firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
+    .then(() => {
       // Login successful, redirect to admin page
       window.location.href = 'admin.html';
     })
