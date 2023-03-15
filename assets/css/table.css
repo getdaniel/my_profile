@@ -27,3 +27,103 @@
     font-weight: bold;
     color: black;
   }
+
+  #reply-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+  }
+  
+  #reply-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 500px;
+  }
+  
+  #reply-modal-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  #reply-modal-close:hover,
+  #reply-modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #reply-modal h2 {
+    margin-top: 0;
+  }
+  
+  #reply-modal form {
+    margin-top: 20px;
+  }
+  
+  #reply-modal form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  #reply-modal form label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  #reply-modal form input[type="text"],
+  #reply-modal form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: inherit;
+    resize: none;
+  }
+  
+  #reply-modal form button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #reply-modal form button[type="button"]:hover {
+    background-color: #0069d9;
+  }
+  
+  #reply-modal form button[type="button"]:focus {
+    outline: none;
+  }
+  
+  #reply-modal form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #reply-modal form button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  #reply-modal form button[type="submit"]:focus {
+    outline: none;
+  }

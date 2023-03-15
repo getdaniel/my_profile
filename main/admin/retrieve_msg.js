@@ -10,6 +10,7 @@ var subjectCell = null;
 var messageCell = null;
 var replyButtonCell = null;
 var replyButton = null;
+var sendButton = null
 var deleteButtonCell = null;
 var deleteButton = null;
 var messagesTable = null;
@@ -66,7 +67,7 @@ messagesRef.on('child_added', snapshot => {
   // Add the new row to the table
   messagesTable = document.querySelector('#messages-table tbody');
   messagesTable.appendChild(tableRow);
-
+   
   // Add a click listener to the reply button
   replyButton.addEventListener('click', () => {
     // Get the email address of the person who sent the message
@@ -77,7 +78,7 @@ messagesRef.on('child_added', snapshot => {
     replyModal.style.display = 'block';
 
     // Add a click listener to the send button in the reply modal
-    const sendButton = document.querySelector('#send-reply');
+    sendButton = document.querySelector('#send-reply-btn');
     sendButton.addEventListener('click', () => {
       // Get the subject and message of the reply
       subject = document.querySelector('#reply-subject').value;
@@ -98,6 +99,13 @@ messagesRef.on('child_added', snapshot => {
         subject: subject,
         message: message
       }));
+    });
+    // Get the X button in the reply modal
+    const closeButton = document.querySelector('#reply-modal .close');
+
+    // Add an onclick event listener to hide the modal when the X button is clicked
+    closeButton.addEventListener('click', () => {
+      replyModal.style.display = 'none';
     });
   });
 
