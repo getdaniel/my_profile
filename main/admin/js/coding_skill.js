@@ -55,8 +55,8 @@ db.on('value', function (snapshot) {
     var deleteCell = row.insertCell();
     languageCell.textContent = data.language;
     percentageCell.textContent = data.percentage + '%';
-    updateCell.innerHTML = '<button class="update-button">Update</button>';
-    deleteCell.innerHTML = '<button class="delete-button">Delete</button>';
+    updateCell.innerHTML = '<button class="update-button btn btn-info">Update</button>';
+    deleteCell.innerHTML = '<button class="delete-button btn btn-danger">Delete</button>';
     updateCell.querySelector('.update-button').addEventListener('click', function () {
       // Set form values to selected row
       languageInput.value = languageCell.textContent;
