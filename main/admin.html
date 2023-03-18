@@ -54,7 +54,7 @@
             </div>
             <div class="modal-buttons">
               <button type="reset" class="btn btn-secondary">Reset</button>
-              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="submit" id="send-reply-btn" class="btn btn-primary">Send</button>
             </div>
           </form>
         </div>
@@ -62,9 +62,118 @@
       <!-- End of modal -->
     </div>
 
+    <!-- Coding Skills -->
+    <div class="vg-page page-about">
+      <h4><b>Coding Skills</b></h4>
+      <table id="coding-skills-table" border="1">
+        <thead>
+          <tr>
+            <th>Programming Language</th>
+            <th>Percentage (%)</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table> 
+      <div class="form-container">
+        <form id="coding-skills-form">
+          <input type="text" id="language-input" placeholder="Programming Language">
+          <input type="text" id="percentage-input" placeholder="Percentage (%)">
+          <button type="button" id="add-coding-skill-button">Add</button>
+          <button type="button" id="update-coding-skill-button" style="display:none">Update</button>
+          <button type="button" id="cancel-coding-skill-button" style="display:none">Cancel</button>
+        </form>
+      </div>
+    </div>
+    <!-- End of Coding Skills -->
+
+    <!-- Design Skills -->
+    <div class="vg-page page-about">
+      <h4><b>Design Skills</b></h4>
+      <table id="design-skills-table" border="1">
+        <thead>
+          <tr>
+            <th> Design Framework Skills </th>
+            <th>Percentage (%)</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table> 
+      <div class="form-container">
+        <form id="design-skills-form">
+          <input type="text" id="framework-input" placeholder="Design Framework Skills">
+          <input type="text" id="framework-percentage-input" placeholder="Percentage (%)">
+          <button type="button" id="add-design-skill-button">Add</button>
+          <button type="button" id="update-design-skill-button" style="display:none">Update</button>
+          <button type="button" id="cancel-design-skill-button" style="display:none">Cancel</button>
+        </form>
+      </div>
+    </div>
+    <!-- End of Design Skills -->
+
+    <!-- Education -->
+    <div class="vg-page page-about">
+      <h4><b> Education </b></h4>
+      <table id="education-table" border="1">
+        <thead>
+          <tr>
+            <th> Date </th>
+            <th> Company </th>
+            <th> Education Level </th>
+            <th> Description </th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="form-container">
+        <form id="education-form">
+          <input type="text" id="date-input" placeholder="Date">
+          <input type="text" id="company-input" placeholder="Company">
+          <input type="text" id="level-input" placeholder="Education Level">
+          <input type="text" id="edu-description-input" placeholder="Description">
+          <button type="button" id="add-education-button">Add</button>
+          <button type="button" id="update-education-button" style="display:none">Update</button>
+          <button type="button" id="cancel-education-button" style="display:none">Cancel</button>
+        </form>
+      </div>
+    </div>
+    <!-- End of Education -->
+
+    <!-- Experience -->
+    <div class="vg-page page-about">
+      <h4><b> Experience </b></h4>
+      <table id="experience-table" border="1">
+        <thead>
+          <tr>
+            <th> Date </th>
+            <th> Work Type </th>
+            <th> Company </th>
+            <th> Description </th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="form-container">
+        <form id="experience-form">
+          <input type="text" id="exp-date-input" placeholder="Date">
+          <input type="text" id="work-type-input" placeholder="Work Type">
+          <input type="text" id="exp-company-input" placeholder="Company">
+          <input type="text" id="exp-description-input" placeholder="Description">
+          <button type="button" id="add-experience-button">Add</button>
+          <button type="button" id="update-experience-button" style="display:none">Update</button>
+          <button type="button" id="cancel-experience-button" style="display:none">Cancel</button>
+        </form>
+      </div>
+    </div>
+    <!-- End of Experience -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="./firebase_config.js"></script>
     <script src="./admin/retrieve_msg.js"></script>
+    <script src="./admin/js/coding_skill.js"></script>
     
   </body>
 </html>

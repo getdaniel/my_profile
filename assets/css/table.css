@@ -127,3 +127,9 @@
   #reply-modal form button[type="submit"]:focus {
     outline: none;
   }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }

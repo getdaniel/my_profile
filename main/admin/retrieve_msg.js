@@ -80,32 +80,31 @@ messagesRef.on('child_added', snapshot => {
 
     // Add a click listener to the send button in the reply modal
     sendButton = document.querySelector('#send-reply-btn');
-    if (sendButton !== null) {
-      sendButton.addEventListener('click', () => {
-        // Get the subject and message of the reply
-        subject = document.querySelector('#reply-subject').value;
-        message = document.querySelector('#reply-message').value;
+    sendButton.addEventListener('click', () => {
+      // Get the email address of the person who sent the message
+      toEmail = messages.email;
 
-        // Send the reply email
-        xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://us-central1-my-profile-371308.cloudfunctions.net/sendEmail', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function() {
-          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            alert('Reply sent!');
-            replyModal.style.display = 'none';
-          }
-        };
-        xhr.send(JSON.stringify({
-          toEmail: toEmail,
-          subject: subject,
-          message: message
-        }));
+      // Get the subject and message of the reply
+      subject = document.querySelector('#reply-subject').value;
+      message = document.querySelector('#reply-message').value;
+
+      // Call the Cloud Function to send the email
+      const sendEmail = firebase.functions().httpsCallable('sendEmail');
+      sendEmail({
+        toEmail: toEmail,
+        subject: subject,
+        message: message
+      })
+      .then((result) => {
+        console.log(result.data.message);
+        alert('Reply sent!');
+        replyModal.style.display = 'none';
+      })
+      .catch((error) => {
+        console.error('Error sending email: ', error);
+        alert('Error sending email');
       });
-    }
-    else {
-      console.log("Error!!!");
-    }
+    });
 
     // Get the X button in the reply modal
     closeButton = document.querySelector('#reply-modal-close');
@@ -115,9 +114,9 @@ messagesRef.on('child_added', snapshot => {
       replyModal.style.display = 'none';
     });
 
-    // Add a click event listener to the document to close the modal if the user clicks outside of it
-    document.addEventListener('click', (event) => {
-      if (event.target === replyModal) {
+    // Add an event listener to hide the modal when the user clicks outside of it
+    window.addEventListener('click', (event) => {
+      if (event.target == replyModal) {
         replyModal.style.display = 'none';
       }
     });
