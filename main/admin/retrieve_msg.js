@@ -95,11 +95,11 @@ messagesRef.on('child_added', snapshot => {
         subject: subject,
         message: message
       })
-      .then((result) => {
+      .then(() => {
         alert('Reply sent!');
         replyModal.style.display = 'none';
       })
-      .catch((error) => {
+      .catch(() => {
         alert('Error sending email');
       });
     });

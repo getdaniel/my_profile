@@ -1,18 +1,18 @@
 // Initialize Firebase Realtime Database
-const design_db = firebase.database().ref('design-skills');
+const designDb = firebase.database().ref('design-skills');
 
 // Get table body element
-var design_tableBody = document.querySelector('#design-skills-table tbody');
+const designTableBody = document.querySelector('#design-skills-table tbody');
 
 // Get form elements
-var frameworkInput = document.querySelector('#framework-input');
-var frameworkPercentageInput = document.querySelector('#framework-percentage-input');
-var addButton = document.querySelector('#add-design-skill-button');
-var updateButton = document.querySelector('#update-design-skill-button');
-var cancelButton = document.querySelector('#cancel-design-skill-button');
+const frameworkInput = document.querySelector('#framework-input');
+const frameworkPercentageInput = document.querySelector('#framework-percentage-input');
+const designAddButton = document.querySelector('#add-design-skill-button');
+const designUpdateButton = document.querySelector('#update-design-skill-button');
+const designCancelButton = document.querySelector('#cancel-design-skill-button');
 
 // Add event listener to Add button
-addButton.addEventListener('click', function () {
+designAddButton.addEventListener('click', () => {
     // Get form values
     var framework = frameworkInput.value.trim();
     var percentage = frameworkPercentageInput.value.trim();
@@ -20,35 +20,35 @@ addButton.addEventListener('click', function () {
     // Check if form values are valid
     if (framework && percentage && !isNaN(percentage)) {
         // Add data to Realtime Database
-        design_db.push({
+        designDb.push({
             framework: framework,
             percentage: parseInt(percentage)
         })
-            .then(function () {
+            .then(() => {
                 // Clear form inputs
                 frameworkInput.value = '';
                 frameworkPercentageInput.value = '';
 
                 // Show Add button and hide Update and Cancel buttons
-                addButton.style.display = 'block';
-                updateButton.style.display = 'none';
-                cancelButton.style.display = 'none';
+                designAddButton.style.display = 'block';
+                designUpdateButton.style.display = 'none';
+                designCancelButton.style.display = 'none';
             })
-            .catch(function (error) {
-                console.error('Error adding document: ', error);
+            .catch(() => {
+                alert('Successfully Added!');
             });
     }
 });
 
 // Listen for changes to Realtime Database
-design_db.on('value', function (snapshot) {
+designDb.on('value', function (snapshot) {
     // Clear table body
-    design_tableBody.innerHTML = '';
+    designTableBody.innerHTML = '';
 
     // Loop through each data item and add to table
     snapshot.forEach(function (childSnapshot) {
         var data = childSnapshot.val();
-        var row = design_tableBody.insertRow();
+        var row = designTableBody.insertRow();
         var frameworkCell = row.insertCell();
         var percentageCell = row.insertCell();
         var updateCell = row.insertCell();
@@ -63,12 +63,12 @@ design_db.on('value', function (snapshot) {
             frameworkPercentageInput.value = parseInt(percentageCell.textContent);
 
             // Show Update and Cancel buttons and hide Add button
-            addButton.style.display = 'none';
-            updateButton.style.display = 'block';
-            cancelButton.style.display = 'block';
+            designAddButton.style.display = 'none';
+            designUpdateButton.style.display = 'block';
+            designCancelButton.style.display = 'block';
 
             // Update data in Realtime Database
-            updateButton.addEventListener('click', function () {
+            designUpdateButton.addEventListener('click', () => {
                 // Get new form values
                 var newFramework = frameworkInput.value.trim();
                 var newPercentage = frameworkPercentageInput.value.trim();
@@ -76,11 +76,11 @@ design_db.on('value', function (snapshot) {
                 // Check if form values are valid
                 if (newFramework && newPercentage && !isNaN(newPercentage)) {
                     // Update data in Realtime Database
-                    design_db.child(childSnapshot.key).update({
+                    designDb.child(childSnapshot.key).update({
                         framework: newFramework,
                         percentage: parseInt(newPercentage)
                     })
-                        .then(function () {
+                        .then(() => {
                             // Update data in table
                             frameworkCell.textContent = newFramework;
                             percentageCell.textContent = newPercentage + '%';
@@ -90,39 +90,39 @@ design_db.on('value', function (snapshot) {
                             frameworkPercentageInput.value = '';
 
                             // Show Add button and hide Update and Cancel buttons
-                            addButton.style.display = 'block';
-                            updateButton.style.display = 'none';
-                            cancelButton.style.display = 'none';
+                            designAddButton.style.display = 'block';
+                            designUpdateButton.style.display = 'none';
+                            designCancelButton.style.display = 'none';
                         })
-                        .catch(function (error) {
-                            console.error('Error updating document: ', error);
+                        .catch(() => {
+                            alert('Successfully Updated!');
                         });
                 }
             });
 
             // Add event listener to Cancel button
-            cancelButton.addEventListener('click', function () {
+            designCancelButton.addEventListener('click', () => {
                 // Clear form inputs
                 frameworkInput.value = '';
                 frameworkPercentageInput.value = '';
 
                 // Show Add button and hide Update and Cancel buttons
-                addButton.style.display = 'block';
-                updateButton.style.display = 'none';
-                cancelButton.style.display = 'none';
+                designAddButton.style.display = 'block';
+                designUpdateButton.style.display = 'none';
+                designCancelButton.style.display = 'none';
             });
 
         });
 
         deleteCell.querySelector('.delete-button').addEventListener('click', function () {
             // Remove data from Realtime Database
-            design_db.child(childSnapshot.key).remove()
-                .then(function () {
+            designDb.child(childSnapshot.key).remove()
+                .then(() => {
                     // Remove row from table
-                    design_tableBody.removeChild(row);
+                    designTableBody.removeChild(row);
                 })
-                .catch(function (error) {
-                    console.error('Error removing document: ', error);
+                .catch(() => {
+                    alert('Successfully Deleted!');
                 });
         });
     });

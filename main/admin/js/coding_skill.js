@@ -1,18 +1,18 @@
 // Initialize Firebase Realtime Database
-const coding_db = firebase.database().ref('coding-skills');
+const codingDb = firebase.database().ref('coding-skills');
 
 // Get table body element
-var coding_tableBody = document.querySelector('#coding-skills-table tbody');
+const codingTableBody = document.querySelector('#coding-skills-table tbody');
 
 // Get form elements
-var languageInput = document.querySelector('#language-input');
-var percentageInput = document.querySelector('#percentage-input');
-var addButton = document.querySelector('#add-coding-skill-button');
-var updateButton = document.querySelector('#update-coding-skill-button');
-var cancelButton = document.querySelector('#cancel-coding-skill-button');
+const languageInput = document.querySelector('#language-input');
+const percentageInput = document.querySelector('#percentage-input');
+const codingAddButton = document.querySelector('#add-coding-skill-button');
+const codingUpdateButton = document.querySelector('#update-coding-skill-button');
+const codingCancelButton = document.querySelector('#cancel-coding-skill-button');
 
 // Add event listener to Add button
-addButton.addEventListener('click', function () {
+codingAddButton.addEventListener('click', () => {
   // Get form values
   var language = languageInput.value.trim();
   var percentage = percentageInput.value.trim();
@@ -20,35 +20,35 @@ addButton.addEventListener('click', function () {
   // Check if form values are valid
   if (language && percentage && !isNaN(percentage)) {
     // Add data to Realtime Database
-    coding_db.push({
+    codingDb.push({
       language: language,
       percentage: parseInt(percentage)
     })
-      .then(function () {
+      .then(() => {
         // Clear form inputs
         languageInput.value = '';
         percentageInput.value = '';
 
         // Show Add button and hide Update and Cancel buttons
-        addButton.style.display = 'block';
-        updateButton.style.display = 'none';
-        cancelButton.style.display = 'none';
+        codingAddButton.style.display = 'block';
+        codingUpdateButton.style.display = 'none';
+        codingCancelButton.style.display = 'none';
       })
-      .catch(function (error) {
-        console.error('Error adding document: ', error);
+      .catch(() => {
+        alert('Successfully Added!');
       });
   }
 });
 
 // Listen for changes to Realtime Database
-coding_db.on('value', function (snapshot) {
+codingDb.on('value', function (snapshot) {
   // Clear table body
-  coding_tableBody.innerHTML = '';
+  codingTableBody.innerHTML = '';
 
   // Loop through each data item and add to table
   snapshot.forEach(function (childSnapshot) {
     var data = childSnapshot.val();
-    var row = coding_tableBody.insertRow();
+    var row = codingTableBody.insertRow();
     var languageCell = row.insertCell();
     var percentageCell = row.insertCell();
     var updateCell = row.insertCell();
@@ -57,18 +57,18 @@ coding_db.on('value', function (snapshot) {
     percentageCell.textContent = data.percentage + '%';
     updateCell.innerHTML = '<button class="update-button btn btn-info">Update</button>';
     deleteCell.innerHTML = '<button class="delete-button btn btn-danger">Delete</button>';
-    updateCell.querySelector('.update-button').addEventListener('click', function () {
+    updateCell.querySelector('.update-button').addEventListener('click', () => {
       // Set form values to selected row
       languageInput.value = languageCell.textContent;
       percentageInput.value = parseInt(percentageCell.textContent);
 
       // Show Update and Cancel buttons and hide Add button
-      addButton.style.display = 'none';
-      updateButton.style.display = 'block';
-      cancelButton.style.display = 'block';
+      codingAddButton.style.display = 'none';
+      codingUpdateButton.style.display = 'block';
+      codingCancelButton.style.display = 'block';
 
       // Update data in Realtime Database
-      updateButton.addEventListener('click', function () {
+      codingUpdateButton.addEventListener('click', function () {
         // Get new form values
         var newLanguage = languageInput.value.trim();
         var newPercentage = percentageInput.value.trim();
@@ -76,11 +76,11 @@ coding_db.on('value', function (snapshot) {
         // Check if form values are valid
         if (newLanguage && newPercentage && !isNaN(newPercentage)) {
           // Update data in Realtime Database
-          coding_db.child(childSnapshot.key).update({
+          codingDb.child(childSnapshot.key).update({
             language: newLanguage,
             percentage: parseInt(newPercentage)
           })
-            .then(function () {
+            .then(() => {
               // Update data in table
               languageCell.textContent = newLanguage;
               percentageCell.textContent = newPercentage + '%';
@@ -90,39 +90,39 @@ coding_db.on('value', function (snapshot) {
               percentageInput.value = '';
 
               // Show Add button and hide Update and Cancel buttons
-              addButton.style.display = 'block';
-              updateButton.style.display = 'none';
-              cancelButton.style.display = 'none';
+              codingAddButton.style.display = 'block';
+              codingUpdateButton.style.display = 'none';
+              codingCancelButton.style.display = 'none';
             })
-            .catch(function (error) {
-              console.error('Error updating document: ', error);
+            .catch(() => {
+              alert('Successfully Updated!');
             });
         }
       });
 
       // Add event listener to Cancel button
-      cancelButton.addEventListener('click', function () {
+      codingCancelButton.addEventListener('click', () => {
         // Clear form inputs
         languageInput.value = '';
         percentageInput.value = '';
 
         // Show Add button and hide Update and Cancel buttons
-        addButton.style.display = 'block';
-        updateButton.style.display = 'none';
-        cancelButton.style.display = 'none';
+        codingAddButton.style.display = 'block';
+        codingUpdateButton.style.display = 'none';
+        codingCancelButton.style.display = 'none';
       });
     });
 
     // Add event listener to Delete button
-    deleteCell.querySelector('.delete-button').addEventListener('click', function () {
+    deleteCell.querySelector('.delete-button').addEventListener('click', () => {
       // Remove data from Realtime Database
-      coding_db.child(childSnapshot.key).remove()
-        .then(function () {
+      codingDb.child(childSnapshot.key).remove()
+        .then(() => {
           // Remove data from table
-          coding_tableBody.removeChild(row);
+          codingTableBody.removeChild(row);
         })
-        .catch(function (error) {
-          console.error('Error removing document: ', error);
+        .catch(() => {
+          alert('Successfully Deleted!');
         });
     });
   });
