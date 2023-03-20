@@ -96,12 +96,10 @@ messagesRef.on('child_added', snapshot => {
         message: message
       })
       .then((result) => {
-        console.log(result.data.message);
         alert('Reply sent!');
         replyModal.style.display = 'none';
       })
       .catch((error) => {
-        console.error('Error sending email: ', error);
         alert('Error sending email');
       });
     });

@@ -1,8 +1,8 @@
 // Initialize Firebase Realtime Database
-var db = firebase.database().ref('education');
+const edu_db = firebase.database().ref('education');
 
 // Get table body element
-var tableBody = document.querySelector('#education-table tbody');
+var edu_tableBody = document.querySelector('#education-table tbody');
 
 // Get form elements
 var dateInput = document.querySelector('#date-input');
@@ -24,7 +24,7 @@ addButton.addEventListener('click', function () {
     // Check if form values are valid
     if (date && company && level && description) {
         // Add data to Realtime Database
-        db.push({
+        edu_db.push({
             date: date,
             company: company,
             level: level,
@@ -49,14 +49,14 @@ addButton.addEventListener('click', function () {
 });
 
 // Listen for changes to Realtime Database
-db.on('value', function (snapshot) {
+edu_db.on('value', function (snapshot) {
     // Clear table body
-    tableBody.innerHTML = '';
+    edu_tableBody.innerHTML = '';
 
     // Loop through each data item and add to table
     snapshot.forEach(function (childSnapshot) {
         var data = childSnapshot.val();
-        var row = tableBody.insertRow();
+        var row = edu_tableBody.insertRow();
         var dateCell = row.insertCell();
         var companyCell = row.insertCell();
         var levelCell = row.insertCell();
@@ -92,7 +92,7 @@ db.on('value', function (snapshot) {
                 // Check if form values are valid
                 if (newDate && newCompany && newLevel && newDescription) {
                     // Update data in Realtime Database
-                    db.child(childSnapshot.key).update({
+                    edu_db.child(childSnapshot.key).update({
                         date: newDate,
                         company: newCompany,
                         level: newLevel,
@@ -132,9 +132,9 @@ db.on('value', function (snapshot) {
 
         // Delete data from Realtime Database
         deleteCell.querySelector('.delete-button').addEventListener('click', function () {
-            db.child(childSnapshot.key).remove()
+            edu_db.child(childSnapshot.key).remove()
                 .then(function () {
-                    console.log('Document successfully deleted!');
+                    edu_tableBody.removeChild(row);
                 })
                 .catch(function (error) {
                     console.error('Error removing document: ', error);

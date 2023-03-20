@@ -1,8 +1,8 @@
 // Initialize Firebase Realtime Database
-var db = firebase.database().ref('design-skills');
+const design_db = firebase.database().ref('design-skills');
 
 // Get table body element
-var tableBody = document.querySelector('#design-skills-table tbody');
+var design_tableBody = document.querySelector('#design-skills-table tbody');
 
 // Get form elements
 var frameworkInput = document.querySelector('#framework-input');
@@ -20,7 +20,7 @@ addButton.addEventListener('click', function () {
     // Check if form values are valid
     if (framework && percentage && !isNaN(percentage)) {
         // Add data to Realtime Database
-        db.push({
+        design_db.push({
             framework: framework,
             percentage: parseInt(percentage)
         })
@@ -41,14 +41,14 @@ addButton.addEventListener('click', function () {
 });
 
 // Listen for changes to Realtime Database
-db.on('value', function (snapshot) {
+design_db.on('value', function (snapshot) {
     // Clear table body
-    tableBody.innerHTML = '';
+    design_tableBody.innerHTML = '';
 
     // Loop through each data item and add to table
     snapshot.forEach(function (childSnapshot) {
         var data = childSnapshot.val();
-        var row = tableBody.insertRow();
+        var row = design_tableBody.insertRow();
         var frameworkCell = row.insertCell();
         var percentageCell = row.insertCell();
         var updateCell = row.insertCell();
@@ -76,7 +76,7 @@ db.on('value', function (snapshot) {
                 // Check if form values are valid
                 if (newFramework && newPercentage && !isNaN(newPercentage)) {
                     // Update data in Realtime Database
-                    db.child(childSnapshot.key).update({
+                    design_db.child(childSnapshot.key).update({
                         framework: newFramework,
                         percentage: parseInt(newPercentage)
                     })
@@ -116,10 +116,10 @@ db.on('value', function (snapshot) {
 
         deleteCell.querySelector('.delete-button').addEventListener('click', function () {
             // Remove data from Realtime Database
-            db.child(childSnapshot.key).remove()
+            design_db.child(childSnapshot.key).remove()
                 .then(function () {
                     // Remove row from table
-                    tableBody.removeChild(row);
+                    design_tableBody.removeChild(row);
                 })
                 .catch(function (error) {
                     console.error('Error removing document: ', error);

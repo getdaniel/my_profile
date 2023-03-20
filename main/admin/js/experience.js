@@ -1,8 +1,8 @@
 // Initialize Firebase Realtime Database
-var db = firebase.database().ref('experience');
+const exp_db = firebase.database().ref('experience');
 
 // Get table body element
-var tableBody = document.querySelector('#experience-table tbody');
+var exp_tableBody = document.querySelector('#experience-table tbody');
 
 // Get form elements
 var dateInput = document.querySelector('#exp-date-input');
@@ -24,7 +24,7 @@ addButton.addEventListener('click', function () {
   // Check if form values are valid
   if (date && workType && company && description) {
     // Add data to Realtime Database
-    db.push({
+    exp_db.push({
       date: date,
       workType: workType,
       company: company,
@@ -49,14 +49,14 @@ addButton.addEventListener('click', function () {
 });
 
 // Listen for changes to Realtime Database
-db.on('value', function (snapshot) {
+exp_db.on('value', function (snapshot) {
   // Clear table body
-  tableBody.innerHTML = '';
+  exp_tableBody.innerHTML = '';
 
   // Loop through each data item and add to table
   snapshot.forEach(function (childSnapshot) {
     var data = childSnapshot.val();
-    var row = tableBody.insertRow();
+    var row = exp_tableBody.insertRow();
     var dateCell = row.insertCell();
     var workTypeCell = row.insertCell();
     var companyCell = row.insertCell();
@@ -92,7 +92,7 @@ db.on('value', function (snapshot) {
         // Check if form values are valid
         if (newDate && newWorkType && newCompany && newDescription) {
           // Update data in Realtime Database
-          db.child(childSnapshot.key).update({
+          exp_db.child(childSnapshot.key).update({
             date: newDate,
             workType: newWorkType,
             company: newCompany,
@@ -134,9 +134,9 @@ db.on('value', function (snapshot) {
     // Add event listener to Delete button
     deleteCell.querySelector('.delete-button').addEventListener('click', function () {
       // Delete data from Realtime Database
-      db.child(childSnapshot.key).remove()
+      exp_db.child(childSnapshot.key).remove()
         .then(function () {
-          console.log('Document successfully deleted!');
+          exp_tableBody.removeChild(row);
         })
         .catch(function (error) {
           console.error('Error deleting document: ', error);

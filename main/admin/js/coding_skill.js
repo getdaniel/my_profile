@@ -1,8 +1,8 @@
 // Initialize Firebase Realtime Database
-var db = firebase.database().ref('coding-skills');
+const coding_db = firebase.database().ref('coding-skills');
 
 // Get table body element
-var tableBody = document.querySelector('#coding-skills-table tbody');
+var coding_tableBody = document.querySelector('#coding-skills-table tbody');
 
 // Get form elements
 var languageInput = document.querySelector('#language-input');
@@ -20,7 +20,7 @@ addButton.addEventListener('click', function () {
   // Check if form values are valid
   if (language && percentage && !isNaN(percentage)) {
     // Add data to Realtime Database
-    db.push({
+    coding_db.push({
       language: language,
       percentage: parseInt(percentage)
     })
@@ -41,14 +41,14 @@ addButton.addEventListener('click', function () {
 });
 
 // Listen for changes to Realtime Database
-db.on('value', function (snapshot) {
+coding_db.on('value', function (snapshot) {
   // Clear table body
-  tableBody.innerHTML = '';
+  coding_tableBody.innerHTML = '';
 
   // Loop through each data item and add to table
   snapshot.forEach(function (childSnapshot) {
     var data = childSnapshot.val();
-    var row = tableBody.insertRow();
+    var row = coding_tableBody.insertRow();
     var languageCell = row.insertCell();
     var percentageCell = row.insertCell();
     var updateCell = row.insertCell();
@@ -76,7 +76,7 @@ db.on('value', function (snapshot) {
         // Check if form values are valid
         if (newLanguage && newPercentage && !isNaN(newPercentage)) {
           // Update data in Realtime Database
-          db.child(childSnapshot.key).update({
+          coding_db.child(childSnapshot.key).update({
             language: newLanguage,
             percentage: parseInt(newPercentage)
           })
@@ -116,10 +116,10 @@ db.on('value', function (snapshot) {
     // Add event listener to Delete button
     deleteCell.querySelector('.delete-button').addEventListener('click', function () {
       // Remove data from Realtime Database
-      db.child(childSnapshot.key).remove()
+      coding_db.child(childSnapshot.key).remove()
         .then(function () {
           // Remove data from table
-          tableBody.removeChild(row);
+          coding_tableBody.removeChild(row);
         })
         .catch(function (error) {
           console.error('Error removing document: ', error);
