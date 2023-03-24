@@ -15,7 +15,7 @@ designSkillsRef.on("value", function(snapshot) {
 
     const designCaption = document.createElement("span");
     designCaption.classList.add("caption");
-    designCaption.textContent = "Framework: " + framework;
+    designCaption.textContent = framework;
 
     const designProgress = document.createElement("div");
     designProgress.classList.add("progress");
