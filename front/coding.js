@@ -35,4 +35,5 @@ codingSkillsRef.on("value", function(snapshot) {
     progressBars.appendChild(progressWrapper);
   });
   progressBars.appendChild(document.createElement("br"));
+  progressBars.appendChild(document.createElement("br"));
 });
