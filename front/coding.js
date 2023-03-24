@@ -2,7 +2,7 @@ const codingSkillsRef = firebase.database().ref("coding-skills");
 
 codingSkillsRef.on("value", function(snapshot) {
 
-  const progressBars = document.querySelector("#progress-bars");
+  const progressBars = document.querySelector("#coding-progress-bars");
 
   snapshot.forEach(function(childSnapshot) {
     var language = childSnapshot.val().language;
