@@ -33,6 +33,6 @@ codingSkillsRef.on("value", function(snapshot) {
     progressWrapper.appendChild(progress);
 
     progressBars.appendChild(progressWrapper);
-    progressBars.appendChild(document.createElement("br"));
   });
+  progressBars.appendChild(document.createElement("br"));
 });
