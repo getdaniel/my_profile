@@ -28,13 +28,11 @@ codingSkillsRef.on("value", function(snapshot) {
     progressBar.style.width = codingPercentage + "%";
     progressBar.textContent = codingPercentage + "%";
 
-    const breakElement = document.createElement("br");
-
     progress.appendChild(progressBar);
     progressWrapper.appendChild(caption);
     progressWrapper.appendChild(progress);
 
     progressBars.appendChild(progressWrapper);
-    progressBar.appendChild(breakElement);
+    progressBars.appendChild(document.createElement("br"));
   });
 });
