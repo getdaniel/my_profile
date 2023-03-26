@@ -34,6 +34,4 @@ designSkillsRef.on("value", function(snapshot) {
     designProgressWrapper.appendChild(designProgress);
     designProgressBars.appendChild(designProgressWrapper);
   });
-  designProgressBars.appendChild(document.createElement("br"));
-  designProgressBars.appendChild(document.createElement("br"));
 });
