@@ -1,7 +1,7 @@
 const expSkillsRef = firebase.database().ref("experience");
 
 expSkillsRef.on("value", function(snapshot) {
-  const expTimeline = document.querySelector(".exp-timeline");
+  const expTimeline = document.querySelector(".timeline");
 
   snapshot.forEach(function(childSnapshot) {
     const expDate = childSnapshot.val().date;
