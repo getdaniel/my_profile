@@ -3,10 +3,7 @@ This repository is the short listed about me to introduce myself as a `Software 
 
 ## View the Website Version :earth_africa:
 Use the 
-``` 
-https://getdaniel.github.io/my_profile/index.html 
-
-```
+- click [Here](https://getdaniel.github.io/my_profile/index.html)
 to view the website version of this portifolio code.
 
 ## About Me :man_technologist: :ethiopia:
