@@ -160,72 +160,81 @@
   z-index: -1;
 }
 
-.timeline {
-  position: relative;
-  display: block;
-  list-style: none;
-  padding-left: 0;
-  width: 100%;
+.edu-timeline,
+.exp-timeline {
+position: relative;
+display: block;
+list-style: none;
+padding-left: 0;
+width: 100%;
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 2px;
-  height: 95%;
-  background-color: #e3e5e9;
+.edu-timeline::before,
+.exp-timeline::before {
+content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+margin: auto;
+width: 2px;
+height: 95%;
+background-color: #e3e5e9;
 }
 
-.timeline li {
-  position: relative;
-  display: block;
-  padding-left: 30px;
-  margin-bottom: 20px;
+.edu-timeline li,
+.exp-timeline li {
+position: relative;
+display: block;
+padding-left: 30px;
+margin-bottom: 20px;
 }
 
-.timeline li::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: -8px;
-  width: 18px;
-  height: 18px;
-  background-color: #747474;
-  border: 3px solid #fff;
-  border-radius: 50%;
+.edu-timeline li::before,
+.exp-timeline li::before {
+content: '';
+position: absolute;
+top: 8px;
+left: -8px;
+width: 18px;
+height: 18px;
+background-color: #747474;
+border: 3px solid #fff;
+border-radius: 50%;
 }
 
-.timeline li .title {
-  width: 150px;
-  padding: 6px 20px;
-  background-color: #747474;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 30px 0 60px 30px;
+.edu-timeline li .title,
+.exp-timeline li .title {
+width: 150px;
+padding: 6px 20px;
+background-color: #747474;
+color: #fff;
+font-weight: 500;
+border-radius: 30px 0 60px 30px;
 }
 
-.timeline li .details {
-  background-color: #f4f5f8;
-  margin-top: 8px;
-  padding: 20px;
-  border-radius: 4px;
+.edu-timeline li .details,
+.exp-timeline li .details {
+background-color: #f4f5f8;
+margin-top: 8px;
+padding: 20px;
+border-radius: 4px;
 }
 
-.timeline li .details h5,
-.timeline li .details p {
-  margin-bottom: 0;
+.edu-timeline li .details h5,
+.edu-timeline li .details p,
+.exp-timeline li .details h5,
+.exp-timeline li .details p {
+margin-bottom: 0;
 }
 
-.timeline li .details small {
-  display: block;
-  font-weight: 500;
-  font-size: 14px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+.edu-timeline li .details small,
+.exp-timeline li .details small {
+display: block;
+font-weight: 500;
+font-size: 14px;
+margin-top: 5px;
+margin-bottom: 10px;
 }
 
 .page-service {
@@ -512,11 +521,13 @@
   border-color: #EF3724;
 }
 
-.theme-red .timeline li:first-child .title {
+.theme-red .edu-timeline li:first-child .title,
+.theme-red .exp-timeline li:first-child .title {
   background-color: #EF3724;
 }
 
-.theme-red .timeline li:first-child::before {
+.theme-red .edu-timeline li:first-child::before,
+.theme-red .exp-timeline li:first-child::before {
   background-color: #EF3724;
   box-shadow: 0 0 0 2px #EF3724;
 }
@@ -543,11 +554,13 @@
   border-color: #2960f7;
 }
 
-.theme-blue .timeline li:first-child .title {
+.theme-blue .edu-timeline li:first-child .title,
+.theme-blue .exp-timeline li:first-child .title {
   background-color: #2960f7;
 }
 
-.theme-blue .timeline li:first-child::before {
+.theme-blue .edu-timeline li:first-child::before,
+.theme-blue .exp-timeline li:first-child::before {
   background-color: #2960f7;
   box-shadow: 0 0 0 2px #2960f7;
 }
@@ -578,11 +591,13 @@
   border-color: #8cc63f;
 }
 
-.theme-green .timeline li:first-child .title {
+.theme-green .edu-timeline li:first-child .title,
+.theme-green .exp-timeline li:first-child .title {
   background-color: #8cc63f;
 }
 
-.theme-green .timeline li:first-child::before {
+.theme-green .edu-timeline li:first-child::before,
+.theme-green .exp-timeline li:first-child::before {
   background-color: #8cc63f;
   box-shadow: 0 0 0 2px #8cc63f;
 }
@@ -613,11 +628,13 @@
   border-color: #fd7e14;
 }
 
-.theme-orange .timeline li:first-child .title {
+.theme-orange .edu-timeline li:first-child .title,
+.theme-orange .exp-timeline li:first-child .title {
   background-color: #fd7e14;
 }
 
-.theme-orange .timeline li:first-child::before {
+.theme-orange .edu-timeline li:first-child::before,
+.theme-orange .exp-timeline li:first-child::before {
   background-color: #fd7e14;
   box-shadow: 0 0 0 2px #fd7e14;
 }
@@ -648,11 +665,13 @@
   border-color: #6f42c1;
 }
 
-.theme-purple .timeline li:first-child .title {
+.theme-purple .edu-timeline li:first-child .title,
+.theme-purple .exp-timeline li:first-child .title {
   background-color: #6f42c1;
 }
 
-.theme-purple .timeline li:first-child::before {
+.theme-purple .edu-timeline li:first-child::before,
+.theme-purple .exp-timeline li:first-child::before {
   background-color: #6f42c1;
   box-shadow: 0 0 0 2px #6f42c1;
 }
