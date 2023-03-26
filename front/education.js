@@ -1,7 +1,7 @@
 const eduSkillsRef = firebase.database().ref("education");
 
 eduSkillsRef.on("value", function(snapshot) {
-  const eduTimeline = document.querySelector(".timeline");
+  const eduTimeline = document.querySelector(".edu-timeline");
 
   snapshot.forEach(function(childSnapshot) {
     const eduDate = childSnapshot.val().date;
